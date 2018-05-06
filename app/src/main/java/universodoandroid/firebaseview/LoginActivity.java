@@ -43,12 +43,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
-
         });
 
 //        btnReset.setOnClickListener(new View.OnClickListener() {
@@ -81,42 +79,31 @@ public class LoginActivity extends AppCompatActivity {
                 mProgress.show();
 
                 //authenticate user
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
 
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
+                        // If sign in fails, display a message to the user. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        mProgress.dismiss();
 
-                                mProgress.dismiss();
+                        if (!task.isSuccessful()) {
 
-                                if (!task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
 
-                                    // there was an error
-                                    if (password.length() < 6) {
-                                        inputPassword.setError(getString(R.string.minimum_password));
 
-                                    } else {
+                        } else {
 
-                                        Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, "O login foi um sucesso", Toast.LENGTH_LONG).show();
 
-                                    }
+                            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                            startActivity(intent);
 
-                                } else {
-
-                                    Toast.makeText(LoginActivity.this, "O login foi um sucesso", Toast.LENGTH_LONG).show();
-
-                                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                                    startActivity(intent);
-
-                                }
-                            }
-
-                        });
-
+                        }
+                    }
+                });
             }
         });
     }

@@ -1,7 +1,6 @@
 package universodoandroid.firebaseview;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -80,6 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
 
                 mProgress.setMessage("Realizando o cadastro...");
+                mProgress.setCancelable(false);
                 mProgress.show();
 
                 //create user
@@ -89,8 +89,6 @@ public class SignUpActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                Toast.makeText(SignUpActivity.this, "Criação de usuário completa" , Toast.LENGTH_SHORT).show();
-
                                 mProgress.dismiss();
 
                                 // Se o cadastro funcionar irá aparecer a mensagem acima, porém se der certo
@@ -98,12 +96,11 @@ public class SignUpActivity extends AppCompatActivity {
 
                                 if (!task.isSuccessful()) {
 
-                                    Toast.makeText(SignUpActivity.this, "A autenticação falhou",
-                                            Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignUpActivity.this, "A autenticação falhou", Toast.LENGTH_SHORT).show();
 
                                 } else {
 
-                                    startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                                    Toast.makeText(SignUpActivity.this, "Criação de usuário completa" , Toast.LENGTH_SHORT).show();
                                     finish();
 
                                 }

@@ -1,14 +1,13 @@
 package universodoandroid.firebaseview;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class PrincipalMenu extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
 
     private Button Logout_btn;
 
@@ -20,16 +19,14 @@ public class PrincipalMenu extends AppCompatActivity {
         setContentView(R.layout.activity_principal_menu);
 
         mAuth = FirebaseAuth.getInstance();
+        Log.i("Email", mAuth.getCurrentUser().getEmail());
 
         //Logout_btn = (Button) findViewById(R.id.btn_sair);
 
-
-
     }
 
-//    public void Btn_Sair(View view) {
+//    public void Logout(View view) {
 //        mAuth.signOut();
-//
 //    }
 
 }

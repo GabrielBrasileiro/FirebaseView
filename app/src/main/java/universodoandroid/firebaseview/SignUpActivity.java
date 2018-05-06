@@ -39,15 +39,6 @@ public class SignUpActivity extends AppCompatActivity {
         inputEmail = (EditText) findViewById(R.id.email_menu_cadastro);
         inputPassword = (EditText) findViewById(R.id.senha_menu_cadastro);
 
-//        btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
-
-//        btnResetPassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(SignUpActivity.this, ResetPasswordActivity.class));
-//            }
-//        });
-
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,7 +87,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                                 if (!task.isSuccessful()) {
 
-                                    Toast.makeText(SignUpActivity.this, "A autenticação falhou", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignUpActivity.this, "Não foi possível realizar o cadastro!", Toast.LENGTH_SHORT).show();
 
                                 } else {
 

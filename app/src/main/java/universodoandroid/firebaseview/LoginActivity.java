@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String email = inputEmail.getText().toString();
-                final String password = inputPassword.getText().toString();
+                String password = inputPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Insira o seu E-mail", Toast.LENGTH_SHORT).show();
@@ -103,10 +103,15 @@ public class LoginActivity extends AppCompatActivity {
 
                         }
                     }
+
                 });
+
             }
+
         });
+
     }
+
 }
 
 
